@@ -15,7 +15,6 @@ public class Account extends Aggregate<Account, Command>{
     private AccountInfo accountInfo;
 
     public List<Event> process(CreateAccountCommand command) {
-        System.out.println(command);
         return Arrays.asList((Event)new AccountCreatedEvent(command.getAccountInfo()));
     }
 

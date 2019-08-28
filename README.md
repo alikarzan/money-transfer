@@ -14,7 +14,7 @@ For the sake of simplicity Event Store used is a custom very primitive in-memory
 
 Appication is packaged as a single but modular (around domain driven microservices) monolithic application that can be easily decomposed into separate microservices.
 
-[high-level-arch](docs/high-level-arch.PNG)
+![high-level-arch](docs/high-level-arch.PNG)
 
 ## API Design
 

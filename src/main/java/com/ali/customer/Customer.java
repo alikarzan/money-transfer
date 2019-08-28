@@ -18,7 +18,6 @@ public class Customer extends Aggregate<Customer, Command>{
     private CustomerInfo customerInfo;
 
     public List<Event> process(CreateCustomerCommand command){
-        System.out.println(command);
         return Arrays.asList((Event)new CustomerCreatedEvent(command.getCustomerInfo()));
     }
 
