@@ -48,7 +48,9 @@ Http 202
 ```
 ## Libraries and Frameworks Used
 . Dropwizard
+
 . Netflix Governator
+
 . Swagger2 (Open API 3)
 
 ## Running The Application
