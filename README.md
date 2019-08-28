@@ -9,7 +9,7 @@ System enables money transfer between accounts of a customer and also between ac
 System is designed using event drivent microservices architectural style by leveraging event-sourcing and CQRS techniques along with Domian Driven Design approach. 
 System consists of Account, Customer and Money Transfer command services plus Account-View and Customer-View query services. Communication between command and query serivces is governed by events over an Event Store. 
 
-Event-sourcing nad CQRS along with aysnchrounous processing in command services are chosen to offer scalability, high-throuput, low latency and high availability kind of quality attributes.
+Event-sourcing and CQRS along with aysnchrounous processing in command services are chosen to offer scalability, high-throuput, low latency and high availability kind of quality attributes.
 
 For the sake of simplicity Event Store used is a custom very primitive in-memory implementation. Customer and Account View Stores are also very primitive custom in-memory implementaions mimicking document-based NoSql data stores.
 
@@ -68,6 +68,9 @@ java -jar target/moneytransfer-1.0-SNAPSHOT.jar server config.yml
 ```
 
 Hitting the url http://localhost:9090/openapi.json will return the API documentation.
+
+API documentation can also be accessed from docs/api-documentation.json
+
 And application can be driven using http://localhost:9090/{resource-path} or http://localhost:9090/}resource-path}/{resource-id}
 
 

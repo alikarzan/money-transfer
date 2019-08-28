@@ -1,0 +1,324 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Money Transfer API",
+    "description" : "RESTful API for Money Transfer Application"
+  },
+  "paths" : {
+    "/account" : {
+      "post" : {
+        "operationId" : "createAccount",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/AccountInfo"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : { }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/{id}" : {
+      "get" : {
+        "operationId" : "getAccount",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AccountViewInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts" : {
+      "get" : {
+        "operationId" : "getAccounts",
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/AccountViewInfo"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customer" : {
+      "get" : {
+        "operationId" : "test",
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "operationId" : "createCustomer",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CustomerInfo"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : { }
+            }
+          }
+        }
+      }
+    },
+    "/customer/{id}" : {
+      "put" : {
+        "operationId" : "updateCustomer",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "*/*" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/AccountInfo"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : { }
+            }
+          }
+        }
+      }
+    },
+    "/customers/{id}" : {
+      "get" : {
+        "operationId" : "getCustomer",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CustomerViewInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customers" : {
+      "get" : {
+        "operationId" : "getCustomers",
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/CustomerViewInfo"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/state/{id}" : {
+      "get" : {
+        "operationId" : "getEventState",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Event"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transfer" : {
+      "post" : {
+        "operationId" : "createMoneyTransfer",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/MoneyTransferInfo"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : { }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "AccountViewInfo" : {
+        "type" : "object",
+        "properties" : {
+          "accountInfo" : {
+            "$ref" : "#/components/schemas/AccountInfo"
+          }
+        }
+      },
+      "Event" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "state" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "sate" : {
+            "type" : "string",
+            "writeOnly" : true
+          }
+        }
+      },
+      "MoneyTransferInfo" : {
+        "type" : "object",
+        "properties" : {
+          "toAccountId" : {
+            "type" : "string"
+          },
+          "fromAccountId" : {
+            "type" : "string"
+          },
+          "amount" : {
+            "type" : "number"
+          }
+        }
+      },
+      "CustomerViewInfo" : {
+        "type" : "object",
+        "properties" : {
+          "customerInfo" : {
+            "$ref" : "#/components/schemas/CustomerInfo"
+          },
+          "accountInfo" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/AccountViewInfo"
+            }
+          }
+        }
+      },
+      "CustomerInfo" : {
+        "type" : "object",
+        "properties" : {
+          "firstName" : {
+            "type" : "string"
+          },
+          "lastName" : {
+            "type" : "string"
+          },
+          "ssn" : {
+            "type" : "string"
+          }
+        }
+      },
+      "AccountInfo" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "balance" : {
+            "type" : "number"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "owner" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}
