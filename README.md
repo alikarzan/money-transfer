@@ -2,6 +2,7 @@
 
 ## Problem Domain
 System enables creating customers and accounts for the customers. 
+
 System enables money transfer between accounts of a customer and also between accounts belonging to different customers.
 
 ## Solution Architecture
