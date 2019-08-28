@@ -1,0 +1,9 @@
+logging:
+  level: INFO
+  loggers:
+    com.ali: DEBUG
+server: 
+  rootPath: /
+  applicationConnectors: 
+    - type: http
+      port: 9090
