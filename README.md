@@ -16,20 +16,22 @@ Appication is packaged as a single but modular (around domain driven microservic
 
 [high-level-arch](docs/high-level-arch.PNG)
 
-##API Design
+## API Design
 
 APIs are designed following Rest architectural style.
 In command services (Customer, Account, Money Transfer) resources are created using Http POST method. These resource creations return Http 202 reposonse status to denote the request is accepted and will be processed asynchronuously along with state and resource URIs in the response body. State uri is to later check if the request succeeded or failed. If request succeeded following the resource uri will return the resource otherwise it will return Http 204 no content as response.
 
 Following is an example of customer create rest request/response.
 
+```
 Http POST http://<server:port>/customer
 {
 	"firstName":"some-name",
 	"lastName":"some-surname",
 	"ssn":"some-ssn"
 }
-
+```
+```
 Http 202
 {
     "stateUri": "/state/<state-id>",
@@ -42,7 +44,7 @@ Http 202
         }
     }
 }
-
+```
 ## Libraries and Frameworks Used
 . Dropwizard
 . Netflix Governator
