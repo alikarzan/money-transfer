@@ -57,7 +57,7 @@ public class MoneyTransferControllerTest{
     }
 
     @Test
-    public void testCreateAccount(){
+    public void testCreateMoneyTransfer(){
         when(moneyTransferService.createTransfer(moneyTransferInfo)).thenReturn(CompletableFuture.supplyAsync(()->aggregate));
 
         moneyTransferController.createMoneyTransfer(asyncResponse, moneyTransferInfo);
@@ -78,7 +78,7 @@ public class MoneyTransferControllerTest{
     }
 
     @Test
-    public void testCreateAccountExceptionally() throws InterruptedException {
+    public void testCreateMoneyTransferExceptionally() throws InterruptedException {
         when(moneyTransferService.createTransfer(moneyTransferInfo)).thenReturn(CompletableFuture.supplyAsync(()-> {
             throw new CompletionException(new Exception("Money Transfer create Exception"));
         }));
