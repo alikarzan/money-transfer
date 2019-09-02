@@ -1,8 +1,9 @@
 package com.ali.customer.web;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -28,15 +29,10 @@ public class CustomerController{
         this.service = service;
     }
 
-    @GET
-    public String test(){
-        return "Hello";
-    }
-
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public void createCustomer(@Suspended final AsyncResponse asyncResponse, CustomerInfo customerInfo){
+    public void createCustomer(@Suspended final AsyncResponse asyncResponse, @NotNull @Valid CustomerInfo customerInfo){
 
              service.createCustomer(customerInfo).handle((customer, exception)->{
                                                             Response response;

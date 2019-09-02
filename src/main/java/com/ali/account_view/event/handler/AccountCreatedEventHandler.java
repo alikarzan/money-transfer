@@ -72,7 +72,6 @@ public class AccountCreatedEventHandler extends EventHandler {
         resourceUriBuilder.append("http://localhost:9090/customers/");
         resourceUriBuilder.append(customerId);
         try{
-            System.out.println("!!!!"+resourceUriBuilder.toString());
            response = httpAdapter.getResource(resourceUriBuilder.toString());
            System.out.println(response);
            if(response != null){

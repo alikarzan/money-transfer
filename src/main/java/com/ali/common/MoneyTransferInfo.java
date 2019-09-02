@@ -2,9 +2,18 @@ package com.ali.common;
 
 import java.math.BigDecimal;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
 public class MoneyTransferInfo{
+    
+    @NotBlank
     private String toAccountId;
+    @NotBlank
     private String fromAccountId;
+    @NotNull
+    @Positive
     private BigDecimal amount;
 
     public MoneyTransferInfo(){}

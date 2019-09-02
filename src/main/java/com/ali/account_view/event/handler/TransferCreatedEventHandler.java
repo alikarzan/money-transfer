@@ -29,7 +29,6 @@ public class TransferCreatedEventHandler extends EventHandler{
     @Override
     public void handle(Event event) {
         if(event instanceof TransferCreatedEvent){
-            System.out.println("%%% inside Account Transfer notif %%%");
             TransferCreatedEvent event2 = (TransferCreatedEvent)event;
             MoneyTransferInfo transferInfo = event2.getTransferInfo();
 
@@ -61,11 +60,22 @@ public class TransferCreatedEventHandler extends EventHandler{
                     eventStore.update(event);
 
                 }else{
-                    updateFailedEvents("Insufficient balance for transferring account", event);
+                    updateFailedEvents("Insufficient balance in From Account for transferring money", event);
                 }
             }else{
-                String description = "Invalid account there is no such account as : "+toAccount == null?event2.getTransferInfo().getToAccountId():""+fromAccount == null?event2.getTransferInfo().getFromAccountId():"";
-                updateFailedEvents(description, event);
+                StringBuffer errornousAccountDescription = new StringBuffer();
+                boolean isToAccountInvalid = false;
+                errornousAccountDescription.append("Invalid account, no such account as : ");
+                if(toAccount == null){
+                    errornousAccountDescription.append("toAccount: "+event2.getTransferInfo().getToAccountId());
+                    isToAccountInvalid = true;
+                }
+                if(fromAccount == null){
+                    if(isToAccountInvalid)
+                        errornousAccountDescription.append(" and ");
+                    errornousAccountDescription.append("fromAccount: "+event2.getTransferInfo().getFromAccountId());
+                }
+                updateFailedEvents(errornousAccountDescription.toString(), event);
             }
         }else if(nextHandler != null){
             nextHandler.handle(event);

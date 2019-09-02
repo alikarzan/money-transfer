@@ -1,5 +1,7 @@
 package com.ali.account.web;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -25,7 +27,7 @@ public class AccountController{
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public void createAccount(@Suspended final AsyncResponse asyncResponse, AccountInfo accountInfo){
+    public void createAccount(@Suspended final AsyncResponse asyncResponse, @NotNull @Valid AccountInfo accountInfo){
 
           accountService.createAccount(accountInfo).handle((account, exception)->{
                 Response response;

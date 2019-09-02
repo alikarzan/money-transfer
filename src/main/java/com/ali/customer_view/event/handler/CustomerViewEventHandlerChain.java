@@ -10,6 +10,7 @@ import com.ali.customer_view.event.handler.CustomerAccountUpdatedEventHandler;
 import com.ali.customer_view.event.handler.CustomerCreatedEventHandler;
 
 public class CustomerViewEventHandlerChain{
+    
     private CustomerCreatedEventHandler createdEventHandler;
     private CustomerAccountAddedEventHandler accountAddedEventHandler;
     private CustomerAccountUpdatedEventHandler accountUpdatedEventHandler;

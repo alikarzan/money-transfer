@@ -9,4 +9,5 @@ public abstract class EventHandler {
     public void setNextHandler(EventHandler eventHandler){
         this.nextHandler = eventHandler;
     }
+
 }

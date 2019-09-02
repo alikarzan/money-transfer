@@ -1,8 +1,13 @@
 package com.ali.common;
 
+import javax.validation.constraints.NotBlank;
+
 public class CustomerInfo{
+    @NotBlank
     private String firstName;
+    @NotBlank
     private String lastName;
+    @NotBlank
     private String ssn;
 
     public CustomerInfo(){

@@ -21,6 +21,5 @@ public class MoneyTransferServie {
 
     public CompletableFuture<AggregateWithEventID<MoneyTransfer, Command>> createTransfer(MoneyTransferInfo transferInfo) {
         return transferRepository.saveAggregate(MoneyTransfer.class, new CreateTransferCommand(transferInfo));
-                                  //.thenApply(aggregate->(MoneyTransfer)aggregate);
     }
 }

@@ -72,43 +72,6 @@
         }
       }
     },
-    "/customer" : {
-      "get" : {
-        "operationId" : "test",
-        "responses" : {
-          "default" : {
-            "description" : "default response",
-            "content" : {
-              "*/*" : {
-                "schema" : {
-                  "type" : "string"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post" : {
-        "operationId" : "createCustomer",
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/CustomerInfo"
-              }
-            }
-          }
-        },
-        "responses" : {
-          "default" : {
-            "description" : "default response",
-            "content" : {
-              "application/json" : { }
-            }
-          }
-        }
-      }
-    },
     "/customer/{id}" : {
       "put" : {
         "operationId" : "updateCustomer",
@@ -139,26 +102,23 @@
         }
       }
     },
-    "/customers/{id}" : {
-      "get" : {
-        "operationId" : "getCustomer",
-        "parameters" : [ {
-          "name" : "id",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
+    "/customer" : {
+      "post" : {
+        "operationId" : "createCustomer",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CustomerInfo"
+              }
+            }
           }
-        } ],
+        },
         "responses" : {
           "default" : {
             "description" : "default response",
             "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/CustomerViewInfo"
-                }
-              }
+              "application/json" : { }
             }
           }
         }
@@ -177,6 +137,31 @@
                   "items" : {
                     "$ref" : "#/components/schemas/CustomerViewInfo"
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customers/{id}" : {
+      "get" : {
+        "operationId" : "getCustomer",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CustomerViewInfo"
                 }
               }
             }
@@ -261,6 +246,7 @@
         }
       },
       "MoneyTransferInfo" : {
+        "required" : [ "amount" ],
         "type" : "object",
         "properties" : {
           "toAccountId" : {
@@ -303,6 +289,7 @@
         }
       },
       "AccountInfo" : {
+        "required" : [ "balance" ],
         "type" : "object",
         "properties" : {
           "id" : {

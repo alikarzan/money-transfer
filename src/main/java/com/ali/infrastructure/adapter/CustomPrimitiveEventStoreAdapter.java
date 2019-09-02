@@ -2,6 +2,8 @@ package com.ali.infrastructure.adapter;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import com.ali.common.event.Event;
 import com.ali.infrastructure.EventStore;
 import com.ali.common.Observer;
@@ -10,6 +12,7 @@ public class CustomPrimitiveEventStoreAdapter implements EventStoreAdapter<Event
 
     private EventStore eventStore;
 
+    @Inject
     public CustomPrimitiveEventStoreAdapter(EventStore eventStore){
         this.eventStore = eventStore;
     }

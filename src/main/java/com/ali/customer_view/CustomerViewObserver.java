@@ -15,7 +15,6 @@ import com.ali.common.Observer;
 public class CustomerViewObserver implements Observer {
 
     private EventStore eventStore;
-
     private CustomerViewEventHandlerChain eventHandlerChain;
 
     @Inject

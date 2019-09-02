@@ -76,7 +76,15 @@ And application can be driven using http://localhost:9090/{resource-path} or htt
 
 ## Tests
 
-Unit and integration tests are under development
+Unit and integration tests including the concurrency tests can be run using the following commands.
 
-Some primitive unstable integration tests are under src/test/java/com/ali/integration directory. They can be run individually once the application run.
+```
+mvn clean
+mvn package
+```
+
+```
+mvn integration-test
+```
+
 

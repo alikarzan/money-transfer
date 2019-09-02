@@ -11,15 +11,24 @@ import org.apache.http.util.EntityUtils;
 
 public class HttpClientAdapter {
 
+    private CloseableHttpClient client;
+
+    public HttpClientAdapter(){
+        this.client = HttpClientBuilder.create().build();
+    }
+    public HttpClientAdapter(CloseableHttpClient client){
+        this.client = client;
+    }
+
     
     public String getResource(String resourceUri) throws ParseException, IOException {
 
-    CloseableHttpClient client = HttpClientBuilder.create().build();
+    //client = HttpClientBuilder.create().build();
 
     HttpGet getRequest = new HttpGet(resourceUri);
     getRequest.setHeader("Accept", "application/json");
     
-    CloseableHttpResponse response =  client.execute(getRequest);
+    CloseableHttpResponse response =  this.client.execute(getRequest);
     
     if(response.getStatusLine().getStatusCode() == 404 || response.getStatusLine().getStatusCode() == 204){
         return null;

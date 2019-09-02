@@ -40,12 +40,10 @@ public class CustomerAccountActivatedEventHandler extends EventHandler {
 
             }else{
 
-                //availability needs to be checked here
                 CustomerInfo customerInfo = customer.getCustomerInfo();
                 AccountViewInfo accountViewInfo = new AccountViewInfo(event2.getAccountInfo());
 
                 List<AccountViewInfo> accounts = new ArrayList<>();
-                //Map<String, AccountViewInfo> newAccount = new HashMap<>();
                 accounts.add(accountViewInfo);
 
                 if(customer.getAccountInfo() != null && !customer.getAccountInfo().isEmpty()){

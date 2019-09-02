@@ -1,6 +1,8 @@
 package com.ali.money_transfer.web;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -27,7 +29,7 @@ public class MoneyTransferController{
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public void createMoneyTransfer(@Suspended final AsyncResponse asyncResponse, MoneyTransferInfo transferInfo){
+    public void createMoneyTransfer(@Suspended final AsyncResponse asyncResponse, @NotNull @Valid MoneyTransferInfo transferInfo){
 
         service.createTransfer(transferInfo).handle((moneyTransfer, exception)->{
                 Response response;

@@ -17,13 +17,23 @@ import com.ali.common.Observer;
 public class EventStore{
     private Map<String, Event> eventStore;
     private List<Observer> observers;
+    private ExecutorService executor;
 
-    private ExecutorService executor = Executors.newFixedThreadPool(5);
+    private static EventStore instance;
+
+    public static EventStore createEventStore(){
+        if(instance == null){
+            instance = new EventStore();
+            instance.init();
+        }
+        return instance;
+    }
 
     @PostConstruct
     private void init(){
         eventStore = new ConcurrentHashMap<>();
         observers = new CopyOnWriteArrayList<>();
+        executor = Executors.newFixedThreadPool(5);
     }
 
     public void add(List<Event> events){
